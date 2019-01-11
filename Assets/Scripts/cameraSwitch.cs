@@ -50,7 +50,7 @@ public class cameraSwitch : MonoBehaviour {
                 cam2.enabled = true;
                 cam3.enabled = false;
                 cam4.enabled = false;
-                Debug.Log("Switch to 2");
+                //Debug.Log("Switch to 2");
             }
             else if (transform.position.x > 4 && transform.position.x < 12.3 && transform.position.z > 11.2 && !cam3.enabled)
             {
@@ -58,7 +58,7 @@ public class cameraSwitch : MonoBehaviour {
                 cam2.enabled = false;
                 cam3.enabled = true;
                 cam4.enabled = false;
-                Debug.Log("Switch to 3");
+                //Debug.Log("Switch to 3");
             }
             else if (transform.position.x > 12.3 && transform.position.z < 11.2 && transform.position.z > 3.5 && !cam4.enabled)
             {
@@ -66,7 +66,7 @@ public class cameraSwitch : MonoBehaviour {
                 cam2.enabled = false;
                 cam3.enabled = false;
                 cam4.enabled = true;
-                Debug.Log("Switch to 4");
+                //Debug.Log("Switch to 4");
             }
             else if (transform.position.x > 4 && transform.position.x < 12.3 && transform.position.z > 3 && transform.position.z < 8 && !cam1.enabled)
             {
@@ -74,9 +74,9 @@ public class cameraSwitch : MonoBehaviour {
                 cam2.enabled = false;
                 cam3.enabled = false;
                 cam4.enabled = false;
-                Debug.Log("Switch to 1");
+               //Debug.Log("Switch to 1");
             }
-            Debug.Log("x: " + transform.position.x + " z: " + transform.position.z);
+            //Debug.Log("x: " + transform.position.x + " z: " + transform.position.z);
         }
 
         // x < 4 && z > 3
