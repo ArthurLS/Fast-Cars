@@ -1264,7 +1264,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3b37530772fbbb441b40078e356e44b3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3b37530772fbbb441b40078e356e44b3, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1758,7 +1758,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1000
   m_Drag: 1
-  m_AngularDrag: 1
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1775,7 +1775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56c1028d7eb1e447db05933cf39e22eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20000
+  speed: 45000
   turnSpeed: 2000
   hoverForce: 7
   hoverHeight: 2.2
@@ -1824,15 +1824,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 7e92c2f1802b28d49b5201eb62230746, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 318.2
+      value: 318.3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7e92c2f1802b28d49b5201eb62230746, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -270.6
+      value: -270.5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7e92c2f1802b28d49b5201eb62230746, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7e92c2f1802b28d49b5201eb62230746, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1975,11 +1975,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3b823826c4320794ab675611336a3f85, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 35.29999
+      value: 35.1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3b823826c4320794ab675611336a3f85, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3b823826c4320794ab675611336a3f85, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2091,11 +2091,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 7e92c2f1802b28d49b5201eb62230746, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 288.5
+      value: 288.3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7e92c2f1802b28d49b5201eb62230746, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -118.5
+      value: -118.7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7e92c2f1802b28d49b5201eb62230746, type: 3}
       propertyPath: m_LocalPosition.z
