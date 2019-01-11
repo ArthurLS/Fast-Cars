@@ -4,41 +4,43 @@ using UnityEngine;
 
 public class shipBehavior : MonoBehaviour {
 
-    Rigidbody rigidbody = null;
-    Vector3 euler_y;
-    Vector3 euler_y2;
+    public float speed = 20f;
+    public float turnSpeed = 5f;
+    public float hoverForce = 65f;
+    public float hoverHeight = 3.5f;
+    private float powerInput;
+    private float turnInput;
+    private Rigidbody carRigidbody;
 
-    // Use this for initialization
-    void Start () {
-        rigidbody = GetComponent<Rigidbody>();
-
-        //Set the axis the Rigidbody rotates in (100 in the y axis)
-        euler_y = new Vector3(0, 0, 123);
-        euler_y2 = new Vector3(0, 0, -123);
-    }
-	
-	// Update is called once per frame
-	void FixedUpdate ()
+    void Awake()
     {
+        carRigidbody = GetComponent<Rigidbody>();
+    }
 
-        if (Input.GetKey(KeyCode.UpArrow))
-        { 
-            rigidbody.AddForce(transform.up * 9, ForceMode.Acceleration);
-        }
-        if (Input.GetKey(KeyCode.DownArrow))
+    void Update()
+    {
+        powerInput = Input.GetAxis("Vertical");
+        turnInput = Input.GetAxis("Horizontal");
+    }
+
+    void FixedUpdate()
+    {
+        Ray ray = new Ray(transform.position, -transform.up);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, hoverHeight))
         {
-            rigidbody.AddForce(transform.up * -9, ForceMode.Acceleration);
+            float proportionalHeight = (hoverHeight - hit.distance);
+            Vector3 appliedHoverForce = Vector3.up * proportionalHeight * hoverForce;
+            carRigidbody.AddForce(appliedHoverForce, ForceMode.Acceleration);
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            Quaternion deltaRotation = Quaternion.Euler(euler_y2 * Time.deltaTime);
-            rigidbody.MoveRotation(rigidbody.rotation * deltaRotation);
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            Quaternion deltaRotation = Quaternion.Euler(euler_y * Time.deltaTime);
-            rigidbody.MoveRotation(rigidbody.rotation * deltaRotation);
-        }
+
+
+        carRigidbody.AddRelativeForce(0f, 0f, powerInput * -speed);
+        carRigidbody.AddRelativeTorque(0f, turnInput * turnSpeed, 0f);
+        Debug.DrawRay(transform.position, -transform.forward * hoverHeight, Color.white);
 
     }
+
 }
