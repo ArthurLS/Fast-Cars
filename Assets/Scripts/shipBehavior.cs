@@ -34,6 +34,8 @@ public class shipBehavior : MonoBehaviour {
             float proportionalHeight = (hoverHeight - hit.distance);
             Vector3 appliedHoverForce = Vector3.up * proportionalHeight * hoverForce;
             carRigidbody.AddForce(appliedHoverForce, ForceMode.Acceleration);
+
+            
         }
 
 

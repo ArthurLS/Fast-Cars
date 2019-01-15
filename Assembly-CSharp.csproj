@@ -62,7 +62,9 @@
      <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
      <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
      <Compile Include="Assets\Scripts\cameraSwitch.cs" />
+     <Compile Include="Assets\Scripts\Checkpoint.cs" />
      <Compile Include="Assets\Scripts\CubeBehavior.cs" />
+     <Compile Include="Assets\Scripts\GameMaster.cs" />
      <Compile Include="Assets\Scripts\shipBehavior.cs" />
      <Compile Include="Assets\Scripts\SteadyCamTarget.cs" />
      <None Include="Assets\Spaceship\readme.txt" />
