@@ -50,6 +50,6 @@ public class GameMaster : MonoBehaviour {
             displayCheck.text = "CheckPoints: " + nextCheck + "/" + checkpoints.Count;
         }
 
-        Debug.Log("Next Checkpoint: " + checkpoints[nextCheck].name);
+        //Debug.Log("Next Checkpoint: " + checkpoints[nextCheck].name);
     }
 }

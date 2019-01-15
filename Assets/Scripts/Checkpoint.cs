@@ -8,7 +8,6 @@ public class Checkpoint : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("TRIGGGERED");
         if (other.CompareTag("Player"))
         {
             gm.validCheckpoint(this.gameObject);
