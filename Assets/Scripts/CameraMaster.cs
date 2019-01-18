@@ -23,7 +23,7 @@ public class CameraMaster : MonoBehaviour {
 
     public void switchCamera(Camera cam)
     {
-        Debug.Log("We are switching the camera to: "+cam.name);
+        //Debug.Log("We are switching the camera to: "+cam.name);
         currentCamera.enabled = false;
         currentCamera = cam;
         if (!carCam.enabled)

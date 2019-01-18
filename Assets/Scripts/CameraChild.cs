@@ -8,7 +8,7 @@ public class CameraChild : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Camera Triggered");
+        //Debug.Log("Camera Triggered");
         if (other.CompareTag("Player"))
         {
             camMaster.switchCamera(this.gameObject.GetComponent<Camera>());

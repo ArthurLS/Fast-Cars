@@ -10,13 +10,12 @@ public class GameMaster : MonoBehaviour {
     public List<GameObject> checkpoints;
     int nextCheck;
     int laps;
-    int lapsToDo;
+    public int lapsToDo;
     public Text displayLaps;
     public Text displayCheck;
 
     void Start()
     {
-        lapsToDo = 3;
         laps = 0;
         displayLaps.text = "Laps: " + laps + "/" + lapsToDo;
         nextCheck = 0;
@@ -29,7 +28,7 @@ public class GameMaster : MonoBehaviour {
 
     }
 
-    public void  validCheckpoint (GameObject check)
+    public void validCheckpoint (GameObject check)
     {
         if (nextCheckPoint.Equals(check)) { 
             nextCheck++;

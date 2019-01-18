@@ -63,10 +63,13 @@
      <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
      <Compile Include="Assets\Scripts\CameraChild.cs" />
      <Compile Include="Assets\Scripts\CameraMaster.cs" />
+     <Compile Include="Assets\Scripts\CarAI.cs" />
+     <Compile Include="Assets\Scripts\CarAICube.cs" />
      <Compile Include="Assets\Scripts\Checkpoint.cs" />
-     <Compile Include="Assets\Scripts\CubeBehavior.cs" />
      <Compile Include="Assets\Scripts\GameMaster.cs" />
+     <Compile Include="Assets\Scripts\Recorder.cs" />
      <Compile Include="Assets\Scripts\shipBehavior.cs" />
+     <Compile Include="Assets\Scripts\SmokeBehaviour.cs" />
      <Compile Include="Assets\Scripts\SteadyCamTarget.cs" />
      <None Include="Assets\Spaceship\readme.txt" />
      <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
