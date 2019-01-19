@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\SmokeBehaviour.cs" />
      <Compile Include="Assets\Scripts\SteadyCamTarget.cs" />
      <None Include="Assets\Spaceship\readme.txt" />
+     <None Include="Assets\Luminaris Starship\Documentation\Readme Luminaris.txt" />
      <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>/home/arthur/Documents/MAR/Fast-Cars/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

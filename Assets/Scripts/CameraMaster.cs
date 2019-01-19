@@ -7,6 +7,7 @@ public class CameraMaster : MonoBehaviour {
     private static CameraMaster instance;
 
     public Camera carCam;
+    public string tagToFollow;
 
     List<Camera> cameras;
     public Camera currentCamera; 
@@ -21,15 +22,19 @@ public class CameraMaster : MonoBehaviour {
 
     }
 
-    public void switchCamera(Camera cam)
+    public void switchCamera(Camera cam, string tag)
     {
         //Debug.Log("We are switching the camera to: "+cam.name);
-        currentCamera.enabled = false;
-        currentCamera = cam;
-        if (!carCam.enabled)
+        if(tag == tagToFollow)
         {
-            currentCamera.enabled = true;
+            currentCamera.enabled = false;
+            currentCamera = cam;
+            if (!carCam.enabled)
+            {
+                currentCamera.enabled = true;
+            }
         }
+
     }
 
     // Update is called once per frame

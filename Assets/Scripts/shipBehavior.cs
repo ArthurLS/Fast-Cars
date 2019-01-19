@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class shipBehavior : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class shipBehavior : MonoBehaviour {
     public float turnSpeed;
     public float hoverForce;
     public float hoverHeight;
+    public Text displaySpeed;
     private float powerInput;
     private float turnInput;
     private Rigidbody carRigidbody;
@@ -17,15 +19,15 @@ public class shipBehavior : MonoBehaviour {
         carRigidbody = GetComponent<Rigidbody>();
     }
 
-    //void Update()
-    //{
+    void Update()
+    {
 
-    //}//
+        powerInput = Input.GetAxis("Vertical");
+        turnInput = Input.GetAxis("Horizontal");
+    }
 
     void FixedUpdate()
     {
-        powerInput = Input.GetAxis("Vertical");
-        turnInput = Input.GetAxis("Horizontal");
         Ray ray = new Ray(transform.position, -transform.up);
         Material mat = null;
 
@@ -59,6 +61,10 @@ public class shipBehavior : MonoBehaviour {
             carRigidbody.AddRelativeTorque(0f, turnInput * turnSpeed, 0f);
         }
         //Debug.DrawRay(transform.position, -transform.forward * hoverHeight, Color.white);
+
+        int velocity = (int) (carRigidbody.velocity.magnitude * 8) ;
+        displaySpeed.text = "Speed: " + velocity + "UA/s";
+
     }
 
 
