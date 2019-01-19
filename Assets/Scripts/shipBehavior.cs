@@ -17,15 +17,17 @@ public class shipBehavior : MonoBehaviour {
         carRigidbody = GetComponent<Rigidbody>();
     }
 
-    void Update()
-    {
-        powerInput = Input.GetAxis("Vertical");
-        turnInput = Input.GetAxis("Horizontal");
-    }
+    //void Update()
+    //{
+
+    //}//
 
     void FixedUpdate()
     {
+        powerInput = Input.GetAxis("Vertical");
+        turnInput = Input.GetAxis("Horizontal");
         Ray ray = new Ray(transform.position, -transform.up);
+        Material mat = null;
 
         RaycastHit hit;
 
@@ -33,17 +35,30 @@ public class shipBehavior : MonoBehaviour {
         {
             float proportionalHeight = (hoverHeight - hit.distance);
             Vector3 appliedHoverForce = Vector3.up * proportionalHeight * hoverForce;
-            carRigidbody.AddForce(appliedHoverForce, ForceMode.Acceleration);
 
-            Debug.Log(findRaycastMaterial(hit));
-            //Debug.Log(hit.textureCoord + " " + hit.textureCoord2);
+            mat = findRaycastMaterial(hit);
+            carRigidbody.AddForce(appliedHoverForce, ForceMode.Acceleration);
         }
 
-
-        carRigidbody.AddRelativeForce(0f, 0f, powerInput * -speed);
-        carRigidbody.AddRelativeTorque(0f, turnInput * turnSpeed, 0f);
+        if (mat == null)
+        {
+            //Debug.Log("null");
+            carRigidbody.AddRelativeForce(0f, 0f, (powerInput * -speed)/4);
+            carRigidbody.AddRelativeTorque(0f, turnInput * turnSpeed, 0f);
+        }
+        else if (mat.name == "Sidewalk (Instance)")
+        {
+            //Debug.Log("Sidewalk");
+            carRigidbody.AddRelativeForce(0f, 0f, (powerInput * -speed)/2);
+            carRigidbody.AddRelativeTorque(0f, turnInput * turnSpeed, 0f);
+        }
+        else if (mat.name == "Street (Instance)")
+        {
+            //Debug.Log("Street");
+            carRigidbody.AddRelativeForce(0f, 0f, powerInput * -speed);
+            carRigidbody.AddRelativeTorque(0f, turnInput * turnSpeed, 0f);
+        }
         //Debug.DrawRay(transform.position, -transform.forward * hoverHeight, Color.white);
-
     }
 
 
@@ -52,9 +67,10 @@ public class shipBehavior : MonoBehaviour {
         // Just in case, also make sure the collider also has a renderer
         // material and texture
         var meshCollider = hit.collider as MeshCollider;
+        var terrainCollider = hit.collider as TerrainCollider;
         if (meshCollider == null || meshCollider.sharedMesh == null)
         {
-            Debug.Log("MeshCollider null");
+            //Debug.Log("MeshCollider null");
             return null;
         }
 

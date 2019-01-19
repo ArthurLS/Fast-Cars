@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\CarAICube.cs" />
      <Compile Include="Assets\Scripts\Checkpoint.cs" />
      <Compile Include="Assets\Scripts\GameMaster.cs" />
+     <Compile Include="Assets\Scripts\OrBITEscript.cs" />
      <Compile Include="Assets\Scripts\Recorder.cs" />
      <Compile Include="Assets\Scripts\shipBehavior.cs" />
      <Compile Include="Assets\Scripts\SmokeBehaviour.cs" />

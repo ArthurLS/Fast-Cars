@@ -34,7 +34,6 @@ public class CarAI : MonoBehaviour {
         var rotation = Quaternion.LookRotation(lookPos);
         rotation *= Quaternion.Euler(0, 90, 0); // this adds a 90 degrees Y rotation
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speedRotation);
-
     }
 
 
