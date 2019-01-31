@@ -21586,7 +21586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   carCam: {fileID: 534669904}
-  tagToFollow: Ghost
+  tagToFollow: Tesla
   currentCamera: {fileID: 1999124518}
 --- !u!1001 &1450493835
 Prefab:

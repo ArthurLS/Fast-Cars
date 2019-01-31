@@ -94,6 +94,8 @@ public class GameMaster : MonoBehaviour {
         InitScene();
 
         teslaGO.SetActive(true);
+        teslaGO.GetComponent<CarAI>().enabled = true;
+
         shipGO.SetActive(true);
         ghostGO.SetActive(false);
         menuGO.SetActive(false);
