@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class shipBehavior : MonoBehaviour {
 
+    private static shipBehavior instance;
+
     public float speed;
     public float turnSpeed;
     public float hoverForce;
@@ -14,20 +16,36 @@ public class shipBehavior : MonoBehaviour {
     private float turnInput;
     private Rigidbody carRigidbody;
 
+    InputVCR vcr;
+    Vector3 recordingStartPos;
+    Quaternion recordingStartRot;
+
+    bool isPlaying;
+
     void Awake()
     {
         carRigidbody = GetComponent<Rigidbody>();
+        vcr = GetComponent<InputVCR>();
+        isPlaying = false;
     }
 
     void Update()
     {
+        if (isPlaying)
+        {
+            powerInput = Input.GetAxis("Vertical");
+            turnInput = Input.GetAxis("Horizontal");
+        }
+        recordingStartPos = vcr.transform.position;
+        recordingStartRot = vcr.transform.rotation;
+        //Debug.Log(vcr.currentFrame);
+        //Debug.Log(vcr.GetRecording().ToString());
 
-        powerInput = Input.GetAxis("Vertical");
-        turnInput = Input.GetAxis("Horizontal");
     }
 
     void FixedUpdate()
     {
+
         Ray ray = new Ray(transform.position, -transform.up);
         Material mat = null;
 
@@ -103,5 +121,22 @@ public class shipBehavior : MonoBehaviour {
         return null;
     }
 
+    public Recording GetRecording()
+    {
+        return this.vcr.GetRecording();
+    }
+
+    public void StartRecording()
+    {
+        vcr.NewRecording();
+    }
+    public void StartPlaying()
+    {
+        isPlaying = true;
+    }
+    public void StopPlaying()
+    {
+        isPlaying = false;
+    }
 
 }

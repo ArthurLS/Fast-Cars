@@ -53,6 +53,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\InputVCR-master\ExampleScene\Scripts\PlayButton.cs" />
+     <Compile Include="Assets\InputVCR-master\ExampleScene\Scripts\Player\CharacterMotorCS.cs" />
+     <Compile Include="Assets\InputVCR-master\ExampleScene\Scripts\Player\FPSInput.cs" />
+     <Compile Include="Assets\InputVCR-master\ExampleScene\Scripts\Player\MouseLook.cs" />
+     <Compile Include="Assets\InputVCR-master\ExampleScene\Scripts\PositionSmoother.cs" />
+     <Compile Include="Assets\InputVCR-master\ExampleScene\Scripts\RecordButton.cs" />
+     <Compile Include="Assets\InputVCR-master\Scripts\InputVCR.cs" />
+     <Compile Include="Assets\InputVCR-master\Scripts\LitJSON\IJsonWrapper.cs" />
+     <Compile Include="Assets\InputVCR-master\Scripts\LitJSON\JsonData.cs" />
+     <Compile Include="Assets\InputVCR-master\Scripts\LitJSON\JsonException.cs" />
+     <Compile Include="Assets\InputVCR-master\Scripts\LitJSON\JsonMapper.cs" />
+     <Compile Include="Assets\InputVCR-master\Scripts\LitJSON\JsonReader.cs" />
+     <Compile Include="Assets\InputVCR-master\Scripts\LitJSON\JsonWriter.cs" />
+     <Compile Include="Assets\InputVCR-master\Scripts\LitJSON\Lexer.cs" />
+     <Compile Include="Assets\InputVCR-master\Scripts\LitJSON\ParserToken.cs" />
+     <Compile Include="Assets\InputVCR-master\Scripts\Recording.cs" />
+     <Compile Include="Assets\Planet Earth Free\SpinFree.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\MenuSceneLoader.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\PauseMenu.cs" />
      <Compile Include="Assets\SampleScenes\Menu\Scripts\SceneAndURLLoader.cs" />
@@ -66,14 +83,18 @@
      <Compile Include="Assets\Scripts\CarAI.cs" />
      <Compile Include="Assets\Scripts\CarAICube.cs" />
      <Compile Include="Assets\Scripts\Checkpoint.cs" />
+     <Compile Include="Assets\Scripts\CubeAnimation.cs" />
      <Compile Include="Assets\Scripts\GameMaster.cs" />
+     <Compile Include="Assets\Scripts\GhostBehavior.cs" />
      <Compile Include="Assets\Scripts\OrBITEscript.cs" />
      <Compile Include="Assets\Scripts\Recorder.cs" />
+     <Compile Include="Assets\Scripts\Scoreboard.cs" />
      <Compile Include="Assets\Scripts\shipBehavior.cs" />
      <Compile Include="Assets\Scripts\SmokeBehaviour.cs" />
      <Compile Include="Assets\Scripts\SteadyCamTarget.cs" />
      <None Include="Assets\Spaceship\readme.txt" />
      <None Include="Assets\Luminaris Starship\Documentation\Readme Luminaris.txt" />
+     <None Include="Assets\InputVCR-master\readme.txt" />
      <None Include="Assets\SampleScenes\Shaders\Skybox-Procedural.shader" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>/home/arthur/Documents/MAR/Fast-Cars/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

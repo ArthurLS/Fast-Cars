@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: 0edbce92c9422450eba42fbf78197690
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: aile
+    100002: aileronD
+    100004: aileronG
+    100006: cabine
+    100008: derive
+    100010: helico
+    100012: //RootNode
+    100014: moteur
+    100016: Tube001
+    100018: Tube002
+    100020: Tube003
+    100022: Tube004
+    100024: Tube005
+    100026: Tube007
+    400000: aile
+    400002: aileronD
+    400004: aileronG
+    400006: cabine
+    400008: derive
+    400010: helico
+    400012: //RootNode
+    400014: moteur
+    400016: Tube001
+    400018: Tube002
+    400020: Tube003
+    400022: Tube004
+    400024: Tube005
+    400026: Tube007
+    2100000: aileMat
+    2100002: aileronDMat
+    2100004: aileronGMat
+    2100006: cabineMat
+    2100008: deriveMat
+    2100010: helicoMat
+    2100012: moteurMat
+    2100014: Tube001Mat
+    2100016: Tube002Mat
+    2100018: Tube003Mat
+    2100020: Tube004Mat
+    2100022: Tube005Mat
+    2100024: Tube007Mat
+    2300000: aile
+    2300002: aileronD
+    2300004: aileronG
+    2300006: cabine
+    2300008: derive
+    2300010: helico
+    2300012: moteur
+    2300014: Tube001
+    2300016: Tube002
+    2300018: Tube003
+    2300020: Tube004
+    2300022: Tube005
+    2300024: Tube007
+    3300000: aile
+    3300002: aileronD
+    3300004: aileronG
+    3300006: cabine
+    3300008: derive
+    3300010: helico
+    3300012: moteur
+    3300014: Tube001
+    3300016: Tube002
+    3300018: Tube003
+    3300020: Tube004
+    3300022: Tube005
+    3300024: Tube007
+    4300000: aile
+    4300002: aileronD
+    4300004: aileronG
+    4300006: cabine
+    4300008: derive
+    4300010: helico
+    4300012: moteur
+    4300014: Tube001
+    4300016: Tube002
+    4300018: Tube003
+    4300020: Tube004
+    4300022: Tube005
+    4300024: Tube007
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
