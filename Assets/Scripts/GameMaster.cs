@@ -6,7 +6,6 @@ public class GameMaster : MonoBehaviour {
 
     private static GameMaster instance;
 
-
     public Scoreboard board;
 
     GameObject nextCheckPoint;
@@ -18,6 +17,10 @@ public class GameMaster : MonoBehaviour {
     public Text displayCheck;
     public Text displayTime;
     public Text displayBestTime;
+
+    // Fields use for countdown
+    public GameObject displayCountDown;
+    public int startCountdown;
 
     public Button buttonReplay;
     public Button buttonGhost;
@@ -90,7 +93,6 @@ public class GameMaster : MonoBehaviour {
     void SetGhostMode()
     {
         Debug.Log("Vs Ghost Mode Activated");
-        ship.StartPlaying();
         mode = GameMode.Ghost;
         InitScene();
 
@@ -99,17 +101,20 @@ public class GameMaster : MonoBehaviour {
         ghostGO.SetActive(true);
         menuGO.SetActive(false);
         uiTextGO.SetActive(true);
-        if (bestRecord != null)
+        StartCoroutine(PlayCountdown(()=>
         {
-            ghost.PlayRecord(bestRecord);
-        }
+            ship.StartPlaying();
+            if (bestRecord != null)
+            {
+                ghost.PlayRecord(bestRecord);
+            }
+        }));
 
     }
     void SetVersusMode()
     {
         Debug.Log("Vs AI Mode Activated");
         mode = GameMode.Versus;
-        ship.StartPlaying();
         InitScene();
 
         teslaGO.SetActive(true);
@@ -119,23 +124,28 @@ public class GameMaster : MonoBehaviour {
         ghostGO.SetActive(false);
         menuGO.SetActive(false);
         uiTextGO.SetActive(true);
-        tesla.Play();
-
+        StartCoroutine(PlayCountdown(()=>
+        {
+            ship.StartPlaying();
+            tesla.Play();
+        }));
     }
     void SetTimeMode()
     {
-        Debug.Log("Vs Time Mode Activated");
-        ship.StartPlaying();
-        mode = GameMode.Time;
         InitScene();
-
+        Debug.Log("Vs Time Mode Activated");
+        mode = GameMode.Time;
         teslaGO.SetActive(false);
         shipGO.SetActive(true);
         ghostGO.SetActive(false);
         menuGO.SetActive(false);
         uiTextGO.SetActive(true);
-
+        StartCoroutine(PlayCountdown(()=>
+        {
+            ship.StartPlaying();
+        }));
     }
+
     void SetReplayMode()
     {
         Debug.Log("Replay Mode Activated");
@@ -148,10 +158,6 @@ public class GameMaster : MonoBehaviour {
         ghostGO.SetActive(false);
         menuGO.SetActive(false);
         uiTextGO.SetActive(false);
-        if (bestRecord != null)
-        {
-            ship.PlayRecord(bestRecord);
-        }
 
         // change lights orientation
         float l1EulerY = light1GO.transform.localEulerAngles.y;
@@ -160,6 +166,12 @@ public class GameMaster : MonoBehaviour {
         float l2EulerZ = light2GO.transform.localEulerAngles.z;
         light1GO.transform.rotation = Quaternion.Euler(60, l1EulerY, l1EulerZ);
         light2GO.transform.rotation = Quaternion.Euler(50, l2EulerY, l2EulerZ);
+
+        if (bestRecord != null)
+        {
+            ship.PlayRecord(bestRecord);
+        }
+
     }
 
     void SetMenuMode()
@@ -168,7 +180,6 @@ public class GameMaster : MonoBehaviour {
         mode = GameMode.Menu;
         ship.StopPlaying();
         InitScene();
-
 
         teslaGO.SetActive(true);
         shipGO.SetActive(true);
@@ -209,7 +220,6 @@ public class GameMaster : MonoBehaviour {
         tesla.Stop();
     }
 
-
     void Update()
     {
         switch (mode)
@@ -231,9 +241,6 @@ public class GameMaster : MonoBehaviour {
                 break;
         }
     }
-
-
-
 
     private void UpdateTime()
     {
@@ -291,6 +298,31 @@ public class GameMaster : MonoBehaviour {
         //Debug.Log("Next Checkpoint: " + checkpoints[nextCheck].name);
     }
 
+    IEnumerator PlayCountdown(System.Action callback)
+    {
+        Debug.Log("Start countdown" + startCountdown);
+        yield return new WaitForSeconds(0.5f);
+        Text countDownText = displayCountDown.GetComponent<Text>();
+        for (int i = startCountdown ; i > 0; i--)
+        {
+            Debug.Log("Countdown" + i);
+            displayCountDown.SetActive(true);
+            countDownText.text = i +"";
+            yield return new WaitForSeconds(1);
+            displayCountDown.SetActive(false);
+
+        }
+        displayCountDown.SetActive(true);
+        countDownText.text = "GO";
+        yield return new WaitForSeconds(1);
+        displayCountDown.SetActive(false);
+
+        if(callback != null)
+        {
+            callback();
+        }
+    }
+
     public void NewBestTime()
     {
         Debug.Log("Best Record");
@@ -310,7 +342,7 @@ public class GameMaster : MonoBehaviour {
         Menu
     }
 
-    private string parseTimeToString(float time)
+    private static string parseTimeToString(float time)
     {
         string min, sec, ms;
 

@@ -134,6 +134,7 @@ public class shipBehavior : MonoBehaviour {
     {
         isPlaying = true;
     }
+
     public void StopPlaying()
     {
         isPlaying = false;
