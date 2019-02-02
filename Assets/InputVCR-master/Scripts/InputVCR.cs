@@ -240,7 +240,7 @@ public class InputVCR : MonoBehaviour
 	{	
 		if ( _mode == InputVCRMode.Playback )
 		{
-            //Debug.Log("Is Playing");
+            // Debug.Log("Is Playing");
 			// update last frame and this frame
 			// this way, all changes are transmitted, even if a button press lasts less than a frame (like in Input)
 			lastFrameInputs = thisFrameInputs;
@@ -253,6 +253,7 @@ public class InputVCR : MonoBehaviour
 				// end of recording
 				if ( finishedPlayback != null )
 					finishedPlayback( );
+                // Debug.Log("Stop");
 				Stop ();
 			}
 			else

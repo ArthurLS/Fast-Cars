@@ -15563,6 +15563,7 @@ MonoBehaviour:
   displayLaps: {fileID: 683051330}
   displayCheck: {fileID: 1393287069}
   displayTime: {fileID: 1523272091}
+  displayBestTime: {fileID: 1124335899}
   buttonReplay: {fileID: 217126099}
   buttonGhost: {fileID: 415431911}
   buttonVersus: {fileID: 1200923377}
@@ -15570,11 +15571,14 @@ MonoBehaviour:
   buttonBack: {fileID: 1886586826}
   ship: {fileID: 1206718918}
   ghost: {fileID: 1227178494}
+  tesla: {fileID: 135985766}
   teslaGO: {fileID: 135985765}
   shipGO: {fileID: 1206718916}
   ghostGO: {fileID: 1227178493}
   menuGO: {fileID: 1332881540}
   uiTextGO: {fileID: 1087950939}
+  light1GO: {fileID: 170076733}
+  light2GO: {fileID: 408420303}
 --- !u!4 &740967781
 Transform:
   m_ObjectHideFlags: 0
@@ -15605,7 +15609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d1071aab73d47c5870b1291352f981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bestTimeDisplayed: {fileID: 1124335899}
 --- !u!82 &740967783
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18801,7 +18804,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Best: 0.0s'
+  m_Text: 'Best: 00:00:00'
 --- !u!222 &1124335900
 CanvasRenderer:
   m_ObjectHideFlags: 0

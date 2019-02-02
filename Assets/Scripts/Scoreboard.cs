@@ -6,13 +6,11 @@ public class Scoreboard : MonoBehaviour {
    
     private static Scoreboard instance;
 
-    public Text bestTimeDisplayed;
-    List<float> scoreboard; 
+    List<float> times;
 
 	// Use this for initialization
 	void Start () {
-        this.scoreboard = new List<float>();
-
+        this.times = new List<float>();
     }
 
     // Update is called once per frame
@@ -22,9 +20,18 @@ public class Scoreboard : MonoBehaviour {
 
     public void addToBoard(float newtime)
     {
-        Debug.Log("New Time");
-        scoreboard.Add(newtime);
-        scoreboard.Sort();
-        bestTimeDisplayed.text = "Best: " + scoreboard[0] + "s";
+        Debug.Log("New Time" + newtime);
+        times.Add(newtime);
+        times.Sort();
+        Debug.Log("AddToBoard BestTime" +times[0]);
+    }
+
+    public float getBestTime()
+    {
+        if (times.Count > 0)
+        {
+            return times[0];
+        }
+        return -1f;
     }
 }

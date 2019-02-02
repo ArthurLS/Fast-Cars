@@ -35,4 +35,10 @@ public class GhostBehavior : MonoBehaviour {
             vcr.Play(recording, 0f);
         }
     }
+
+    public void StopRecord()
+    {
+        isPlaying = false;
+        vcr.Stop();
+    }
 }

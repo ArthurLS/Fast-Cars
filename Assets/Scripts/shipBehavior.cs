@@ -139,4 +139,18 @@ public class shipBehavior : MonoBehaviour {
         isPlaying = false;
     }
 
+
+    public void PlayRecord(Recording recording)
+    {
+        if (recording != null)
+        {
+            isPlaying = true;
+            vcr.Play(recording, 0f);
+        }
+    }
+
+    public void StopRecord()
+    {
+        vcr.Stop();
+    }
 }

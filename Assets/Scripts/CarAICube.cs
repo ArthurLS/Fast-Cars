@@ -11,7 +11,7 @@ public class CarAICube : MonoBehaviour {
         //Debug.Log(this.name + " is asking to switch target");
         if (other.CompareTag("Tesla"))
         {
-            tesla.switchMarker(this.gameObject);
+            tesla.SwitchMarker(this.gameObject);
         }
     }
 }
