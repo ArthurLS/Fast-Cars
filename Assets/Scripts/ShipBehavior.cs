@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class shipBehavior : MonoBehaviour {
+public class ShipBehavior : MonoBehaviour {
 
-    private static shipBehavior instance;
+    private static ShipBehavior instance;
 
     public float speed;
     public float turnSpeed;

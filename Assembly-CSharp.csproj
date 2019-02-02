@@ -89,7 +89,7 @@
      <Compile Include="Assets\Scripts\OrBITEscript.cs" />
      <Compile Include="Assets\Scripts\Recorder.cs" />
      <Compile Include="Assets\Scripts\Scoreboard.cs" />
-     <Compile Include="Assets\Scripts\shipBehavior.cs" />
+     <Compile Include="Assets\Scripts\ShipBehavior.cs" />
      <Compile Include="Assets\Scripts\SmokeBehaviour.cs" />
      <Compile Include="Assets\Scripts\SteadyCamTarget.cs" />
      <None Include="Assets\Spaceship\readme.txt" />

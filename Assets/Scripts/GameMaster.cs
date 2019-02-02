@@ -33,7 +33,7 @@ public class GameMaster : MonoBehaviour {
     float playerTime;
     float lapTime;
 
-    public shipBehavior ship;
+    public ShipBehavior ship;
     public GhostBehavior ghost;
     public CarAI tesla;
 
