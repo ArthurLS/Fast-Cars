@@ -57,4 +57,17 @@ public class CameraMaster : MonoBehaviour {
         }
     }
 
+    public void SetOmniscient()
+    {
+        Debug.Log("Omniscient Camera Activated");
+        currentCamera.enabled = true;
+        carCam.enabled = false;
+    }
+
+    public void SetThirdPerson()
+    {
+        Debug.Log("Third Person Camera Activated");
+        carCam.enabled = true;
+        currentCamera.enabled = false;
+    }
 }

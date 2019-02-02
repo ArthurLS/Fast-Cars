@@ -133,25 +133,12 @@ public class ShipBehavior : MonoBehaviour {
     public void StartPlaying()
     {
         isPlaying = true;
+        carRigidbody.isKinematic = false;
     }
 
     public void StopPlaying()
     {
         isPlaying = false;
-    }
-
-
-    public void PlayRecord(Recording recording)
-    {
-        if (recording != null)
-        {
-            isPlaying = true;
-            vcr.Play(recording, 0f);
-        }
-    }
-
-    public void StopRecord()
-    {
-        vcr.Stop();
+        carRigidbody.isKinematic = true;
     }
 }

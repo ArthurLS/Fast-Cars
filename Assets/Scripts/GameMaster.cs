@@ -7,6 +7,7 @@ public class GameMaster : MonoBehaviour {
     private static GameMaster instance;
 
     public Scoreboard board;
+    public CameraMaster cameraMaster;
 
     GameObject nextCheckPoint;
     public List<GameObject> checkpoints;
@@ -60,11 +61,18 @@ public class GameMaster : MonoBehaviour {
     Quaternion teslaStartingRot;
     Quaternion ghostStartingRot;
 
+    Material ghotStartingMat;
+    Material shipStartingMat;
+
     // Time of the palyer when the race is playing
     float currentTime;
 
     void Start()
     {
+
+        shipStartingMat= shipGO.GetComponentInChildren<Renderer>().material;
+        ghotStartingMat = ghostGO.GetComponentInChildren<Renderer>().material;
+
         shipStartingPos = shipGO.transform.position;
         teslaStartingPos = teslaGO.transform.position;
         ghostStartingPos = ghostGO.transform.position;
@@ -82,6 +90,7 @@ public class GameMaster : MonoBehaviour {
 
         uiTextGO.SetActive(false);
         menuGO.SetActive(true);
+        endScreenGO.SetActive(false);
 
         buttonReplay.onClick.AddListener(SetReplayMode);
         buttonGhost.onClick.AddListener(SetGhostMode);
@@ -163,8 +172,8 @@ public class GameMaster : MonoBehaviour {
         InitScene();
 
         teslaGO.SetActive(false);
-        shipGO.SetActive(true);
-        ghostGO.SetActive(false);
+        shipGO.SetActive(false);
+        ghostGO.SetActive(true);
         menuGO.SetActive(false);
         uiTextGO.SetActive(false);
         endScreenGO.SetActive(false);
@@ -177,9 +186,14 @@ public class GameMaster : MonoBehaviour {
         light1GO.transform.rotation = Quaternion.Euler(60, l1EulerY, l1EulerZ);
         light2GO.transform.rotation = Quaternion.Euler(50, l2EulerY, l2EulerZ);
 
-        if (bestRecord != null)
+        // change camera
+        cameraMaster.SetOmniscient();
+
+
+        if(bestRecord != null)
         {
-            ship.PlayRecord(bestRecord);
+            ghostGO.GetComponentInChildren<Renderer>().material = shipStartingMat;
+            ghost.PlayRecord(bestRecord);
         }
 
     }
@@ -196,6 +210,7 @@ public class GameMaster : MonoBehaviour {
         ghostGO.SetActive(true);
         menuGO.SetActive(true);
         uiTextGO.SetActive(false);
+        endScreenGO.SetActive(false);
 
     }
 
@@ -221,10 +236,9 @@ public class GameMaster : MonoBehaviour {
         light2GO.transform.rotation = light2StartingRot;
 
         // reset Replay
-        ship.StopRecord();
-
-        // reset Ghost
         ghost.StopRecord();
+        ghostGO.GetComponentInChildren<Renderer>().material = ghotStartingMat;
+        cameraMaster.SetThirdPerson();
 
         //reset IA
         tesla.Stop();
@@ -252,11 +266,10 @@ public class GameMaster : MonoBehaviour {
         }
     }
 
-    private void UpdateTime()
+    void UpdateTime()
     {
         currentTime = Time.time - playerTime;
-
-        displayTime.text = "Time: " + parseTimeToString(currentTime);
+        displayTime.text = "Time: " + ParseTimeToString(currentTime);
     }
 
     public void validCheckpoint (GameObject check)
@@ -279,8 +292,9 @@ public class GameMaster : MonoBehaviour {
                  if(nextCheck == 2)
                 {
                     PlayEndScreen();
+                    mode = GameMode.Menu;
                     board.addToBoard(currentTime);
-                    if (timeDiff < scoreboard.getBestTime() || scoreboard.getBestTime().Equals(-1f))
+                    if (timeDiff < scoreboard.getBestTime() || scoreboard.getBestTime().Equals(-1))
                     { 
                         NewBestTime();
                     }
@@ -338,17 +352,17 @@ public class GameMaster : MonoBehaviour {
         endScreenGO.SetActive(true);
     }
 
-    public void NewBestTime()
+    void NewBestTime()
     {
         Debug.Log("Best Record");
         // update displayBest with new best time and save the record
-        displayBestTime.text = "Best: " + parseTimeToString(scoreboard.getBestTime()); 
+        displayBestTime.text = "Best: " + ParseTimeToString(scoreboard.getBestTime()); 
         bestRecord = ship.GetRecording();
         Debug.Log(bestRecord.ToString());
        
     }
 
-    private enum GameMode
+    enum GameMode
     {
         Ghost,
         Replay,
@@ -357,7 +371,7 @@ public class GameMaster : MonoBehaviour {
         Menu
     }
 
-    private static string parseTimeToString(float time)
+    static string ParseTimeToString(float time)
     {
         string min, sec, ms;
 
