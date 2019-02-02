@@ -20,10 +20,8 @@ public class Scoreboard : MonoBehaviour {
 
     public void addToBoard(float newtime)
     {
-        Debug.Log("New Time" + newtime);
         times.Add(newtime);
         times.Sort();
-        Debug.Log("AddToBoard BestTime" +times[0]);
     }
 
     public float getBestTime()
