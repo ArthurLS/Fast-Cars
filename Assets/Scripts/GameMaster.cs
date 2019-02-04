@@ -25,6 +25,7 @@ public class GameMaster : MonoBehaviour {
     public Button buttonVersus;
     public Button buttonTime;
     public Button buttonBack;
+    public Button buttonExit;
 
     GameMode mode;
     Scoreboard scoreboard;
@@ -92,10 +93,17 @@ public class GameMaster : MonoBehaviour {
         buttonVersus.onClick.AddListener(SetVersusMode);
         buttonTime.onClick.AddListener(SetTimeMode);
         buttonBack.onClick.AddListener(SetMenuMode);
+        buttonExit.onClick.AddListener(ExitGame);
 
     }
 
-   void SetGhostMode()
+    void ExitGame()
+    {
+        Debug.Log("Exiting Game");
+        Application.Quit();
+    }
+
+    void SetGhostMode()
     {
         Debug.Log("Vs Ghost Mode Activated");
         InitScene();
@@ -192,9 +200,12 @@ public class GameMaster : MonoBehaviour {
             ghostGO.GetComponentInChildren<Renderer>().material = shipStartingMat;
             ghost.PlayRecord(bestRecord);
             StartCoroutine(WaitForReplay(() =>
-            { 
-                Debug.Log("End of the Replay!");
-
+            {
+                if(mode == GameMode.Replay)
+                {
+                    endScreenGO.SetActive(true);
+                    Debug.Log("End of the Replay!");
+                }
             }));
         }
 
@@ -207,6 +218,7 @@ public class GameMaster : MonoBehaviour {
         Debug.Log("Menu Mode Activated");
         mode = GameMode.Menu;
         ship.StopPlaying();
+        ghost.StopRecord();
         InitScene();
 
         teslaGO.SetActive(true);
@@ -330,7 +342,6 @@ public class GameMaster : MonoBehaviour {
     IEnumerator WaitForReplay(System.Action callback)
     {
         yield return new WaitForSeconds(scoreboard.getBestTime());
-        endScreenGO.SetActive(true);
         if (callback != null)
         {
             callback();
