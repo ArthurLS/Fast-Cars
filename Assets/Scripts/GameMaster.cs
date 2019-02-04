@@ -280,7 +280,8 @@ public class GameMaster : MonoBehaviour {
 
     void UpdateTime()
     {
-        playerLapTime = Time.time - startTime; 
+        playerLapTime = Time.time - startTime;
+
         displayTime.text = "Time: " + ParseTimeToString(playerLapTime);
     }
 
@@ -322,7 +323,9 @@ public class GameMaster : MonoBehaviour {
 
     void FinishRace()
     {
+        playerLapTime = Time.time - startTime;
         board.addToBoard(playerLapTime);
+
         // check if the playerLapTime is the best time 
         if (playerLapTime <= scoreboard.getBestTime() || scoreboard.getBestTime().Equals(-1))
         {
