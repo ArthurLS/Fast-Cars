@@ -9,7 +9,7 @@ public class CameraChild : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-
+        //Debug.Log("Trigger camera");
         camMaster.switchCamera(this.gameObject.GetComponent<Camera>(), other.tag);
 
     }

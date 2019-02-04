@@ -7,7 +7,7 @@ public class CameraMaster : MonoBehaviour {
     private static CameraMaster instance;
 
     public Camera carCam;
-    public string tagToFollow;
+    private string tagToFollow = "Ghost";
 
     List<Camera> cameras;
     public Camera currentCamera; 
@@ -24,7 +24,8 @@ public class CameraMaster : MonoBehaviour {
 
     public void switchCamera(Camera cam, string tag)
     {
-        //Debug.Log("We are switching the camera to: "+cam.name);
+        //Debug.Log("We are switching the camera to: " + cam.name);
+        //Debug.Log("Tag: "+tag);
         if(tag == tagToFollow)
         {
             currentCamera.enabled = false;

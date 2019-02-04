@@ -15,6 +15,10 @@ public class GhostBehavior : MonoBehaviour {
     public float damping = 10f;
     private bool isPlaying;
 
+    public Light hlRight;
+    public Light hlLeft;
+
+    public bool isOnLight = false;
 
     void Awake()
     {
@@ -40,5 +44,28 @@ public class GhostBehavior : MonoBehaviour {
     {
         isPlaying = false;
         vcr.Stop();
+    }
+
+    void Update()
+    {
+        if (isOnLight)
+        {
+            hlRight.intensity = 7;
+            hlLeft.intensity = 7;
+        }
+        else
+        {
+            hlRight.intensity = 0;
+            hlLeft.intensity = 0;
+        }
+    }
+
+    public void setLightOn()
+    {
+        isOnLight = true;
+    }
+    public void setLightOff()
+    {
+        isOnLight = false;
     }
 }
