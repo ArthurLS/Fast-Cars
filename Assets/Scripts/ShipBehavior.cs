@@ -21,12 +21,18 @@ public class ShipBehavior : MonoBehaviour {
     Quaternion recordingStartRot;
 
     bool isPlaying;
+    AnimSpeedControl[] anims;
+
 
     void Awake()
     {
         carRigidbody = GetComponent<Rigidbody>();
         vcr = GetComponent<InputVCR>();
         isPlaying = false;
+
+        anims = GetComponentsInChildren<AnimSpeedControl>();
+
+
     }
 
     void Update()
@@ -82,6 +88,12 @@ public class ShipBehavior : MonoBehaviour {
 
         int velocity = (int) (carRigidbody.velocity.magnitude * 8) ;
         displaySpeed.text = "Speed: " + velocity + "UA/s";
+
+        foreach (AnimSpeedControl anim in anims)
+        {
+            //Debug.Log("Anim!");
+            anim.speed = ((float) velocity)/50;
+        }
 
     }
 

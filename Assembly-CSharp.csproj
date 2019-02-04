@@ -78,6 +78,7 @@
      <Compile Include="Assets\SampleScenes\Scripts\ParticleSceneControls.cs" />
      <Compile Include="Assets\SampleScenes\Scripts\PlaceTargetWithMouse.cs" />
      <Compile Include="Assets\SampleScenes\Scripts\SlowMoButton.cs" />
+     <Compile Include="Assets\Scripts\AnimSpeedControl.cs" />
      <Compile Include="Assets\Scripts\CameraChild.cs" />
      <Compile Include="Assets\Scripts\CameraMaster.cs" />
      <Compile Include="Assets\Scripts\CarAI.cs" />
