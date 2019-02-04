@@ -287,20 +287,12 @@ public class GameMaster : MonoBehaviour {
 
             if (nextCheck < checkpoints.Count)
             {
-                float timeDiff = Time.time - lapTime;
-                // Mov this code where to the end line
+
+                // Move this code where to the end line
                  if(nextCheck == 2)
                 {
-                    PlayEndScreen();
-                    mode = GameMode.Menu;
-                    board.addToBoard(currentTime);
-                    if (timeDiff < scoreboard.getBestTime() || scoreboard.getBestTime().Equals(-1))
-                    { 
-                        NewBestTime();
-                    }
+                    FinishRace();
                 }
-
-
                 nextCheckPoint = checkpoints[nextCheck];
             }
             else
@@ -347,19 +339,20 @@ public class GameMaster : MonoBehaviour {
         }
     }
 
-    void PlayEndScreen()
+    void FinishRace()
     {
         endScreenGO.SetActive(true);
-    }
-
-    void NewBestTime()
-    {
-        Debug.Log("Best Record");
-        // update displayBest with new best time and save the record
-        displayBestTime.text = "Best: " + ParseTimeToString(scoreboard.getBestTime()); 
-        bestRecord = ship.GetRecording();
-        Debug.Log(bestRecord.ToString());
-       
+        mode = GameMode.Menu;
+        board.addToBoard(currentTime);
+        // check if the current time is the best time 
+        if (currentTime <= scoreboard.getBestTime() || scoreboard.getBestTime().Equals(-1))
+        {
+            Debug.Log("Best Record");
+            // update displayBest with new best time and save the record
+            displayBestTime.text = "Best: " + ParseTimeToString(scoreboard.getBestTime());
+            bestRecord = ship.GetRecording();
+            Debug.Log(bestRecord.ToString());
+        }
     }
 
     enum GameMode
