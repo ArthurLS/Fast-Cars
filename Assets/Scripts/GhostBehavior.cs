@@ -7,15 +7,14 @@ public class GhostBehavior : MonoBehaviour {
     private static GhostBehavior instance;
 
     InputVCR vcr;
-    Vector3 lastPos;
+    Vector3 lastPos; 
     Quaternion lastRot;
 
     Vector3 targPos;
     Quaternion targRot; 
-    public float damping = 10f;
+    //public float damping = 10f;
     private bool isPlaying;
 
-    public Light hlRight;
     public Light hlLeft;
 
     public bool isOnLight = false;
@@ -50,12 +49,10 @@ public class GhostBehavior : MonoBehaviour {
     {
         if (isOnLight)
         {
-            hlRight.intensity = 7;
             hlLeft.intensity = 7;
         }
         else
         {
-            hlRight.intensity = 0;
             hlLeft.intensity = 0;
         }
     }

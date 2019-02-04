@@ -91,7 +91,6 @@ public class ShipBehavior : MonoBehaviour {
         // Just in case, also make sure the collider also has a renderer
         // material and texture
         var meshCollider = hit.collider as MeshCollider;
-        var terrainCollider = hit.collider as TerrainCollider;
         if (meshCollider == null || meshCollider.sharedMesh == null)
         {
             //Debug.Log("MeshCollider null");

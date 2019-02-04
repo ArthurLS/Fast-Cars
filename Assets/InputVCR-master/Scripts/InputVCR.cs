@@ -73,7 +73,7 @@ public class InputVCR : MonoBehaviour
     public bool snapToSyncedLocation = true;
 // whether this transform will snap to recorded locations, or left accessible for your own handling
 	
-    public int recordingFrameRate = 60;
+    public int recordingFrameRate = 90;
     [SerializeField]
 	private InputVCRMode _mode = InputVCRMode.Record; // initial mode that vcr is operating in
 	public InputVCRMode mode

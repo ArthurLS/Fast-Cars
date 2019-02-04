@@ -12,9 +12,6 @@ public class GameMaster : MonoBehaviour {
     GameObject nextCheckPoint;
     public List<GameObject> checkpoints;
     int nextCheck;
-    int laps;
-    public int lapsToDo;
-    public Text displayLaps;
     public Text displayCheck;
     public Text displayTime;
     public Text displayBestTime;
@@ -31,8 +28,7 @@ public class GameMaster : MonoBehaviour {
 
     GameMode mode;
     Scoreboard scoreboard;
-    float playerTime;
-    float lapTime;
+    float startTime;
 
     public ShipBehavior ship;
     public GhostBehavior ghost;
@@ -65,7 +61,7 @@ public class GameMaster : MonoBehaviour {
     Material shipStartingMat;
 
     // Time of the palyer when the race is playing
-    float currentTime;
+    float playerLapTime;
 
     void Start()
     {
@@ -113,7 +109,7 @@ public class GameMaster : MonoBehaviour {
         StartCoroutine(PlayCountdown(()=>
         {
             mode = GameMode.Ghost;
-            playerTime = Time.time;
+            startTime = Time.time;
             ship.StartPlaying();
             if (bestRecord != null)
             {
@@ -135,7 +131,7 @@ public class GameMaster : MonoBehaviour {
         StartCoroutine(PlayCountdown(()=>
         {
             mode = GameMode.Time;
-            playerTime = Time.time;
+            startTime = Time.time;
             ship.StartPlaying();
         }));
     }
@@ -156,7 +152,7 @@ public class GameMaster : MonoBehaviour {
         StartCoroutine(PlayCountdown(() =>
         {
             mode = GameMode.Versus;
-            playerTime = Time.time;
+            startTime = Time.time;
             ship.StartPlaying();
             tesla.Play();
         }));
@@ -224,8 +220,6 @@ public class GameMaster : MonoBehaviour {
 
     void InitScene()
     {
-        laps = 0;
-        displayLaps.text = "Laps: " + laps + "/" + lapsToDo;
         nextCheck = 0;
         nextCheckPoint = checkpoints[0];
         displayCheck.text = "CheckPoints: " + nextCheck + "/" + checkpoints.Count;
@@ -274,13 +268,12 @@ public class GameMaster : MonoBehaviour {
 
     void UpdateTime()
     {
-        currentTime = Time.time - playerTime;
-        displayTime.text = "Time: " + ParseTimeToString(currentTime);
+        playerLapTime = Time.time - startTime; 
+        displayTime.text = "Time: " + ParseTimeToString(playerLapTime);
     }
 
     public void validCheckpoint (GameObject check)
     {
-        float saveLap = 0.0f;
         if (nextCheckPoint.Equals(check)) {
             nextCheck++;
 
@@ -288,7 +281,7 @@ public class GameMaster : MonoBehaviour {
             {
                 if(nextCheck == 2)
                 {
-                    FinishRace();
+                    //FinishRace();
                 }
 
                 // Move this code where to the end line
@@ -296,22 +289,18 @@ public class GameMaster : MonoBehaviour {
             }
             else
             {
-                //FinishRace();
+                FinishRace();
 
                 nextCheck = 0;
                 nextCheckPoint = checkpoints[0];
-                laps++;
             }
 
             if (check.name.Equals("Start Line"))
             {
                 UpdateTime();
                 ship.StartRecording();
-                saveLap = lapTime;
-                lapTime = Time.time;
             }
 
-            displayLaps.text = "Laps: " + laps + "/" + lapsToDo;
             displayCheck.text = "CheckPoints: " + nextCheck + "/" + checkpoints.Count;
         }
 
@@ -321,9 +310,9 @@ public class GameMaster : MonoBehaviour {
 
     void FinishRace()
     {
-        board.addToBoard(currentTime);
-        // check if the current time is the best time 
-        if (currentTime <= scoreboard.getBestTime() || scoreboard.getBestTime().Equals(-1))
+        board.addToBoard(playerLapTime);
+        // check if the playerLapTime is the best time 
+        if (playerLapTime <= scoreboard.getBestTime() || scoreboard.getBestTime().Equals(-1))
         {
             Debug.Log("Best Record");
             // update displayBest with new best time and save the record
@@ -385,13 +374,16 @@ public class GameMaster : MonoBehaviour {
     {
         string min, sec, ms;
 
-        if ((int)((time) / 60) < 10) min = "0" + (int)((time) / 60) + ":";
+        if ((int)(time / 60) < 10) min = "0" + (int)(time / 60) + ":";
         else min = (int)(time/ 60) + ":";
 
-        if ((int)((time) % 60) < 10) sec = "0" + (int)((time) % 60) + ":";
-        else sec = (int)((time) % 60) + ":";
+        if ((int)(time % 60) < 10) sec = "0" + (int)(time % 60) + ":";
+        else sec = (int)(time % 60) + ":";
 
-        ms = (time).ToString("00.00").Substring(3);
+        if(((int) (time / 60) >= 1) && ((int)(time % 60) >= 40))
+            ms = (time).ToString("00.00").Substring(4);
+        else 
+            ms = (time).ToString("00.00").Substring(3);
 
         return min + sec + ms;
 

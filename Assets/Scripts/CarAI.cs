@@ -10,7 +10,7 @@ public class CarAI : MonoBehaviour {
 
     public List<GameObject> markers;
     int nextMaker;
-    int lapsToDo;
+    public int lapsToDo;
 
     public float speedForward;
     float stepForward;
@@ -20,7 +20,6 @@ public class CarAI : MonoBehaviour {
     public void Play()
     {
         nextMaker = 0;
-        lapsToDo = gm.lapsToDo;
         isPlaying = true;
     }
 
@@ -61,7 +60,7 @@ public class CarAI : MonoBehaviour {
     {
         isPlaying = false;
         nextMaker = 0;
-        lapsToDo = gm.lapsToDo;
+        lapsToDo = 1;
         stepForward = 0;
     }
 }
